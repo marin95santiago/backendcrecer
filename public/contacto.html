@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="Crecer dmc">
+    <meta property="og:title" content="Contacto">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="Contácta con nosotros y te daremos la mejor asesoría contable">
+    <meta property="og:image" content="http://crecerdmc.com/recursos/logo-crecer-dmc.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="900">
+    <meta property="og:url" content="http://crecerdmc.com/contacto.html">
+    <link rel="shortcut icon" href="recursos/logotipo-crecer-dmc.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilocontacto.css">
+    <title>Contácto</title>
+</head>
+<body>
+    <header>
+        <nav class="navegacion">
+            <a href="index.html">Inicio</a>
+            <a href="formatos.html">Formatos</a>
+            <a href="contacto.html" rel="nofollow">Contacto</a>
+            <a href="politica-de-privacidad.html" rel="nofollow">Política de privacidad</a>
+        </nav>
+        <section class="portada">
+            <div class="logo">
+                <img src="recursos/logo-crecer-dmc.png" alt="Logo crecer dmc">
+            </div>
+        </section>
+    </header>
+    <main>
+        <div class="contFormulario">
+            <form action="" class="formulario">
+                <div class="comentario">
+                    <label for="comentario">Comentario</label>
+                    <textarea id="comentario" cols="30" rows="10" placeholder="comentario" required></textarea>
+                </div>
+                
+                <div class="asunto">
+                    <label for="asunto">Asunto</label>
+                    <input id="asunto" type="text" placeholder="Asunto" required>
+                </div>
+
+                <div class="email">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" placeholder="Email" required>
+                </div>
+
+                <div class="enviar">
+                    <input type="submit" value="Enviar comentario">
+                </div>
+            </form>
+        </div>
+        <div class="mapa">
+            <label for="mapa">Dirección: calle 5 sur # 9a 51, Guadalupe, Huila</label>
+            <iframe name="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.34103927684!2d-75.76109848599026!3d2.0191620985280156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e251f5a503cc575%3A0xeeb14a373382d69!2sCrecer%20dmc!5e0!3m2!1ses!2sar!4v1588548634587!5m2!1ses!2sar" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </main>
+    <footer id="foot">
+        <section class="footer">
+            <div class="textfooter">
+                <h3>correo</h3>
+                <p>crecerdmc@gmail.com</p>
+            </div>
+            <div class="textfooter">
+                <h3>teléfono</h3>
+                <p>311 536 9544</p>
+            </div>
+            <div class="textfooter">
+                <h3>Facebook</h3>
+                <p>Crecerdmc</p>
+            </div>
+        </section>
+        <h2 class="titulofinal">&copy; CRECER DMC 2020</h2>
+    </footer>
+    <!-- Pluggin de facebook para chat -->
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v7.0'
+        });
+      };
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="1326062964203790"
+        theme_color="#44bec7"
+        logged_in_greeting="Hola, cómo podemos ayudarte?"
+        logged_out_greeting="Hola, cómo podemos ayudarte?">
+    </div>
+    <!-- termina pluggin -->
+    
+</body>
+</html>

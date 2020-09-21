@@ -1,0 +1,560 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+header{
+    width: 100%;
+    height: auto;
+    background: linear-gradient(to bottom, #105B63, black );
+}
+
+.contenedorNav{
+    width: 100%;
+    height: 30px;
+    background: white;
+}
+
+
+.navegacion{
+    width: 78%;
+    margin: 20px auto;
+    text-align: right;
+}
+
+.navegacion > a{
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    color: #105B63;
+    margin-left: 7px;
+}
+
+.foto{
+    width: 78%;
+    background-size: cover;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.foto img{
+    width: 100%;
+}
+
+.contenedorLogo{
+    width: 78%;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorLogo > img{
+    width: 350px;
+
+}
+
+main{
+    width: 100%;
+    height: auto;
+    background: black;
+}
+
+.articuloPrincipal{
+    width: 78%;
+    height: auto;
+    background: white;
+    margin: 0 auto;
+}
+
+/* configuraciones globales */
+
+.articuloPrincipal img{
+    width: 100%;
+}
+
+.articuloPrincipal a{
+    text-decoration: none;
+    font-weight: bold;
+    color: gray;
+}
+
+.articuloPrincipal i{
+    font-weight: 300;
+}
+
+.articuloPrincipal h2{
+    font-weight: bold;
+}
+
+.cabeceraArticulo{
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabeceraArticulo > h4{
+    color: gray;
+    font-weight: 300;
+    font-size: 20px;
+    padding-bottom: 30px;
+}
+
+.cabeceraArticulo > h1{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+}
+
+samp{
+    font-weight: bold;
+}
+
+.parrafoArticulo{
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.parrafoArticulo > p{
+    font-weight: 400;
+}
+
+.lista1{
+    margin-left: 40px;
+}
+
+.autor{
+    width: 60%;
+    height: 100px;
+    margin: 30px auto 0 auto;
+    background: rgba(235, 235, 235, 0.575);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.autor >h3{
+    font-weight: 300;
+}
+
+.contFormulario{
+    width: 78%;
+    height: 500px;
+    margin: 0 auto;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.formulario{
+    background: white;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+label{
+    font-size: 15px;
+    font-weight: 300;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comentario{
+    width: 100%;
+}
+
+.comentario > textarea{
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.asunto{
+    margin-top: 15px;
+    width: 40%;
+}
+
+.asunto > input{
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.email{
+    margin-top: 15px;
+    width: 40%;
+}
+
+.email > input{
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.enviar{
+    margin-top: 30px;
+    width: 44%;
+}
+
+.enviar > input{
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    font-size: 20px;
+    background: #105B63;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    color: white;
+}
+
+.articulos{
+    width: 78%;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+    padding: 50px 0;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.articulo{
+    width: 30%;
+    height: 250px;
+    position: relative;
+    bottom: 1px;
+}
+
+.articulo:hover{
+    transition: 1s;
+    bottom: 10px;
+}
+
+.link1{
+    width: 100%;
+    height: inherit;
+    text-decoration: none;
+}
+
+.fondoArticuloB{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../recursos/articuloB.jpg);
+    background-size: cover;
+}
+
+.fondoArticuloB > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticuloB > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fondoArticuloA{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../recursos/articuloA.jpg);
+    background-size: cover;
+}
+
+.fondoArticuloA > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticuloA > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fondoArticulo1{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../recursos/articulo1.png);
+    background-size: cover;
+}
+
+.fondoArticulo1 > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticulo1 > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fondoArticulo2{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url(../recursos/articulo2.jpg);
+    background-size: cover;
+}
+
+.fondoArticulo2 > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticulo2 > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fondoArticulo3{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../recursos/articulo3.jpg);
+    background-size: cover;
+}
+
+.fondoArticulo3 > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticulo3 > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fondoArticulo4{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../recursos/articulo4.jpg);
+    background-size: cover;
+}
+
+.fondoArticulo4 > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticulo4 > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fondoArticulo5{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../recursos/articulo5.jpg);
+    background-size: cover;
+}
+
+.fondoArticulo5 > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticulo5 > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.fondoArticulo6{
+    width: 100%;
+    height: inherit;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../recursos/articulo6.jpg);
+    background-size: cover;
+}
+
+.fondoArticulo6 > h4{
+    margin-left: 20px;
+    padding-top: 50px;
+    color: rgb(190, 190, 190);
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.fondoArticulo6 > h3{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+footer{
+    width: 100%;
+    background: #105B63;
+    border-top: solid 2px #0086B5;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulofinal{
+    color: gray;
+    text-align: center;
+}
+
+.footer{
+    width: 68%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.textfooter{
+    margin: 60px 0;
+}
+
+.textfooter h3{
+    font-size: 20px;
+    margin-bottom: 7px;
+    color: white;
+    text-align: center;
+}
+
+.textfooter p{
+    font-size: 20px;
+    border-top: #0086B5 solid 2px;
+    text-align: center;
+    color: white;
+}
+
+/* compatibilidad telefonos */
+
+
+@media screen and (max-width:1000px){
+    
+}
+
+@media screen and (max-width:900px){
+
+    .articulo{
+        width: 48%;
+        margin-bottom: 15px;
+    }
+
+    .enviar > input{
+        font-size: 12px;
+    }
+
+    .textfooter h3{
+        font-size: 15px;
+    }
+    
+    .textfooter p{
+        font-size: 15px;
+    }
+    
+}
+
+@media screen and (max-width:700px){
+
+    .articuloPrincipal{
+        width: 100%;
+    }
+
+    .cabeceraArticulo > h1{
+        font-size: 30px;
+    }
+
+    .contFormulario{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:500px){
+
+    .parrafoArticulo{
+        width: 90%;
+    }
+    .autor{
+        width: 90%;
+    }
+    .formulario{
+        width: 80%;
+    }
+    .articulo{
+        width: 90%;
+    }
+    .navegacion{
+        margin: 0 auto 10px auto;
+        text-align: center;
+    }
+    .navegacion > a{
+        font-size: 10px;
+    }
+    .textfooter{
+        margin: 10px 0;
+        width: 90%;
+    }
+    .footer{
+        align-items: center;
+    }
+}
