@@ -29,7 +29,7 @@ router.get('/:id', isAuth, isAdmin, async (req, res) => {
 
 router.post('/', isAuth, isAdmin, async (req, res) => {
     try {
-        const { isAdmin, email, password, name, secondName, lastName, enterprice, idEnterprice, entidad, idEntidad } = req.body;
+        const { isAdmin, email, password, name, secondName, lastName, entidad, idEntidad } = req.body;
         const newUser = new User ({
             isAdmin, 
             email, 
@@ -37,8 +37,8 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
             name,
             secondName,
             lastName,
-            enterprice, 
-            idEnterprice,
+            enterprice: req.user.enterprice,
+            idEnterprice: req.user.idEnterprice,
             entidad,
             idEntidad
         });
