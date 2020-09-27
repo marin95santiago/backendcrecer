@@ -6,7 +6,7 @@ const Enterprice = require('../models/enterprice');
 
 router.get('/', isAuth, isAdmin, async (req, res) => {
     try {
-        const response = await Enterprice.find();
+        const response = await Enterprice.findOne({_id: req.user.idEnterprice});
         if(response){
             res.send(response)
         }
