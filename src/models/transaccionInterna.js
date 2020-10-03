@@ -1,43 +1,40 @@
 const { Schema, model } = require('mongoose');
 
-const enterpriceSchema = new Schema ({
-    name:{
+const transaccionInternaSchema = new Schema ({
+    idEnterprice: {
         type: String,
         required: true
     },
-    nit:{
-        type: String,
-        required: true,
-        unique: true
-    },
-    bossName:{
+    idEntidad: {
         type: String,
         required: true
     },
-    bossLastName:{
+    idUser: {
         type: String,
         required: true
     },
-    document:{
+    type: {
         type: String,
         required: true
     },
-    country:{
+    date: {
+        type: Date,
+        required: true
+    },
+    serial: {
         type: String,
         required: true
     },
-    address:{
+    bank: {
         type: String,
         required: true
     },
-    phone:{
-        type: String,
-        required: true
-    },
-    email:{
-        type: String,
+    value: {
+        type: Number,
         required: true
     }
+},{
+    timestamps: true
 });
 
-module.exports = model('Enterprice', enterpriceSchema);
+module.exports = model('TransaccionInterna', transaccionInternaSchema);

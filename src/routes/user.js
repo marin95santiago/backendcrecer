@@ -54,6 +54,31 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
     }
 });
 
+router.post('/dev', async (req, res) => {
+    try {
+        const { isAdmin, email, password, name, secondName, lastName, enterprice, idEnterprice } = req.body;
+        const newUser = new User ({
+            isAdmin, 
+            email, 
+            password, 
+            name,
+            secondName,
+            lastName,
+            enterprice,
+            idEnterprice,
+        });
+
+        newUser.password = await newUser.encrypt(password);
+
+        const response = await newUser.save();
+        if(response){
+            res.status(200).send({message: 'Usuario creado con éxito'});
+        }
+    } catch (error) {
+        res.status(500).send({message: 'Error al crear nuevo usuario'});
+    }
+});
+
 router.put('/:id', isAuth, isAdmin, async (req, res) => {
     try {
         const { name, secondName, lastName, entidad, idEntidad } = req.body;
