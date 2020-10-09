@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose');
 
-const transaccionInternaSchema = new Schema ({
-    idEnterprice: {
+const AjusteBancoSchema = new Schema ({
+    idEnterprice:{
         type: String,
         required: true
     },
-    idEntidad: {
+    idEntidad:{
         type: String,
         required: true
     },
@@ -13,32 +13,32 @@ const transaccionInternaSchema = new Schema ({
         type: String,
         required: true
     },
-    idUser: {
+    serial:{
         type: String,
         required: true
     },
-    type: {
+    bank:{
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        required: true
+    numberAccount:{
+        type: String,
+        required: true,
     },
-    serial: {
+    type:{
         type: String,
         required: true
     },
-    bank: {
+    description:{
         type: String,
         required: true
     },
-    value: {
+    value:{
         type: Number,
         required: true
     }
-},{
+}, {
     timestamps: true
 });
 
-module.exports = model('TransaccionInterna', transaccionInternaSchema);
+module.exports = model('AjusteBanco', AjusteBancoSchema);

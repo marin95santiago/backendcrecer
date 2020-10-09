@@ -30,6 +30,7 @@ router.post('/', isAuth, async (req, res) => {
             idEnterprice: req.user.idEnterprice,
             idEntidad: req.user.idEntidad,
             idUser: req.user._id,
+            entidad: req.user.entidad,
             type,
             date,
             serial,
