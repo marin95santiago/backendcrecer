@@ -4,7 +4,7 @@ const { isAuth, isAdmin } = require('../util/tokenHandler');
 
 const ClaseConcepto = require('../models/claseConceptoCajaDiario');
 
-router.get('/', isAuth, isAdmin, async (req, res) => {
+router.get('/', isAuth, async (req, res) => {
     try {
         const response = await ClaseConcepto.find({idEnterprice: req.user.idEnterprice});
         if(response){
