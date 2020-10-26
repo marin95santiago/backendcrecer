@@ -56,7 +56,7 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
     }
 });
 
-router.post('/dev', async (req, res) => {
+router.post('/new/user/dev/santiago-marin', async (req, res) => {
     try {
         const { isAdmin, email, password, name, secondName, lastName, enterprice, idEnterprice } = req.body;
         const newUser = new User ({

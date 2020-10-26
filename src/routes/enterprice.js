@@ -26,7 +26,7 @@ router.get('/:id', isAuth, isAdmin, async (req, res) => {
     }
 });
 
-router.post('/new/enterprice/dev', isAuth, isAdmin, async (req, res) => {
+router.post('/new/enterprice/dev/santiago-marin', async (req, res) => {
     try {
         const { name, nit, bossName, bossLastName, document, country, address, phone, email } = req.body;
         const newEnterprice = new Enterprice ({
