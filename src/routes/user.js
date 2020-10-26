@@ -5,6 +5,8 @@ const { isAuth, isAdmin } = require('../util/tokenHandler');
 
 const User = require('../models/user');
 
+const SECRET = process.env.SECRET || 'SECRETFORJWTOKEN';
+
 router.get('/', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await User.find();
@@ -132,7 +134,7 @@ router.post('/login', async (req, res) => {
                     entidad: user.entidad,
                     idEntidad: user.idEntidad
                     
-                }, process.env.SECRET, {expiresIn: '12h'});
+                }, SECRET, {expiresIn: '12h'});
 
                 res.send(token)
             }

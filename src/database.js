@@ -3,7 +3,7 @@ dotenv.config();
 
 const mongoose = require('mongoose');
 
-const URI = process.env.MONGO_URI;
+const URI = process.env.MONGO_URI || 'mongodb://localhost/apicrecer';
 
 mongoose.connect(URI, {
     useNewUrlParser: true,

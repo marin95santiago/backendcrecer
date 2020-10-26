@@ -1,11 +1,13 @@
 const jwt = require('jsonwebtoken');
 
+const SECRET = process.env.SECRET || 'SECRETFORJWTOKEN';
+
 const isAuth = (req, res, next) => {
     const token = req.headers.authorization;
     if(token){
         const onlyToken = token.slice(7, token.length);
 
-        jwt.verify(onlyToken, process.env.SECRET, (error, decoded) => {
+        jwt.verify(onlyToken, SECRET, (error, decoded) => {
             if(error){
                 res.status(404).send({message: 'Token invalid'});
             } else {
