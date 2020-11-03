@@ -1,6 +1,8 @@
 const dotenv = require('dotenv');
 dotenv.config();
 
+const path = require('path');
+
 const express = require('express');
 const app = express();
 
@@ -10,9 +12,8 @@ const bodyParser = require('body-parser');
 // settings
 app.set('port', process.env.PORT || 5000);
 
-// midleware
+// midlewared
 app.use(express.static('./public'));
-app.use('/app/crecer', express.static('./build'));
 app.use(bodyParser.json());
 app.use(cors());
 
