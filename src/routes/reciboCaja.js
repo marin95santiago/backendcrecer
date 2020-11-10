@@ -77,11 +77,12 @@ router.get('/:id', isAuth, async (req, res) => {
 
 router.put('/:id', isAuth, async (req, res) => {
     try {
-        const { user, date, type, number, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
+        const { user, date, serial, type, number, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
         const response = await ReciboCajaDiario.findOneAndUpdate({_id: req.params.id}, {
             user, 
             date,
-            type, 
+            serial,
+            type,
             number, 
             client, 
             valueText, 

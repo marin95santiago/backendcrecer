@@ -48,9 +48,10 @@ router.post('/', isAuth, async (req, res) => {
 
 router.put('/:id', isAuth, async (req, res) => {
     try {
-        const { type, bank, value } = req.body;
+        const { type, serial, bank, value } = req.body;
         await TransaccionInterna.findOneAndUpdate({_id: req.params.id}, {
             type,
+            serial,
             bank,
             value
         });
