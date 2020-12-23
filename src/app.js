@@ -13,7 +13,6 @@ const bodyParser = require('body-parser');
 app.set('port', process.env.PORT || 5000);
 
 // midlewared
-app.use(express.static('./public'));
 app.use(bodyParser.json());
 app.use(cors());
 
