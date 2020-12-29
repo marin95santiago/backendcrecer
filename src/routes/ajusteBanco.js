@@ -11,19 +11,20 @@ router.get('/admin', isAuth, isAdmin, async (req, res) => {
             res.send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al obtener los recibos de caja'})
+        res.status(500).send({message: 'Error al obtener los ajustes de bancos'})
     }
 });
 
 router.post('/', isAuth, isAdmin, async (req, res) => {
     try {
-        const { idEntidad, entidad, serial, bank, type, description, value } = req.body;
+        const { idEntidad, entidad, serial, bank, numberAccount, type, description, value } = req.body;
         const newAjusteBanco = new AjusteBanco ({
             idEnterprice: req.user.idEnterprice,
             idEntidad,
             entidad,
             serial,
             bank,
+            numberAccount,
             type,
             description,
             value
@@ -50,12 +51,13 @@ router.get('/:id', isAuth, async (req, res) => {
 
 router.put('/:id', isAuth, async (req, res) => {
     try {
-        const { idEntidad, entidad, serial, bank, type, description, value } = req.body;
+        const { idEntidad, entidad, serial, bank, numberAccount, type, description, value } = req.body;
         const response = await AjusteBanco.findOneAndUpdate({_id: req.params.id}, {
             idEntidad,
             entidad,
             serial,
             bank,
+            numberAccount,
             type,
             description,
             value
