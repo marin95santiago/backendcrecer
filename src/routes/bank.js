@@ -39,9 +39,9 @@ router.get('/client', isAuth, async (req, res) => {
 
 router.post('/', isAuth, isAdmin, async (req, res) => {
     try {
-        const { idEnterprice, idEntidad, bank, numberAccount, typeAccount } = req.body;
+        const { idEntidad, bank, numberAccount, typeAccount } = req.body;
         const newBank = new Bank ({
-            idEnterprice,
+            idEnterprice: req.user.idEnterprice,
             idEntidad,
             bank,
             numberAccount,

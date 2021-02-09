@@ -23,6 +23,8 @@ app.use('/api/type-entidad', require('./routes/tipoEntidad'));
 app.use('/api/clase-concepto-caja-diario', require('./routes/claseConceptoCajaDiario'));
 app.use('/api/concepto-caja-diario', require('./routes/conceptoCajaDiario'));
 app.use('/api/entidad', require('./routes/entidad'));
+app.use('/api/entidad-caja', require('./routes/entidadCaja'));
+app.use('/api/entidad-banco', require('./routes/entidadBanco'));
 app.use('/api/bank', require('./routes/bank'));
 app.use('/api/transaccion-interna', require('./routes/transaccionInterna'));
 app.use('/api/ajuste-banco', require('./routes/ajusteBanco'));

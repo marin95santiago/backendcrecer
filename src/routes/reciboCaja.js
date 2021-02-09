@@ -39,13 +39,15 @@ router.get('/client', isAuth, async (req, res) => {
 
 router.post('/', isAuth, async (req, res) => {
     try {
-        const { enterprice, idEnterprice, entidad, idEntidad, user, type, date, serial, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
+        const { type, date, serial, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
         const newRecibo = new ReciboCajaDiario ({
-            enterprice, 
-            idEnterprice,
-            entidad,
-            idEntidad,
-            user,
+            enterprice: req.user.enterprice, 
+            idEnterprice: req.user.idEnterprice,
+            entidad: req.user.entidad,
+            idEntidad: req.user.idEntidad,
+            user: `${req.user.name} ${req.user.lastname}`,
+            emailUser: req.user.email,
+            idUser: req.user._id,
             type, 
             date, 
             serial, 
@@ -77,9 +79,10 @@ router.get('/:id', isAuth, async (req, res) => {
 
 router.put('/:id', isAuth, async (req, res) => {
     try {
-        const { user, date, serial, type, number, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
+        const { date, serial, type, number, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
         const response = await ReciboCajaDiario.findOneAndUpdate({_id: req.params.id}, {
-            user, 
+            user: `${req.user.name} ${req.user.lastname}`,
+            idUser: req.user._id, 
             date,
             serial,
             type,

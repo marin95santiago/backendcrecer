@@ -28,17 +28,16 @@ router.get('/:id', isAuth, async (req, res) => {
 
 router.post('/', isAuth, isAdmin, async (req, res) => {
     try {
-        const { enterprice, idEnterprice, typeEntidad, nit, name, address, phone, saldoCajaDiario, saldoBancos } = req.body;
+        const { typeEntidad, nit, name, boss, address, phone } = req.body;
         const newEntidad = new Entidad ({
-            enterprice,
-            idEnterprice, 
+            enterprice: req.user.enterprice,
+            idEnterprice: req.user.idEnterprice,
             typeEntidad,
             nit, 
-            name, 
+            name,
+            boss,
             address, 
-            phone, 
-            saldoCajaDiario, 
-            saldoBancos
+            phone
         });
         const response = await newEntidad.save();
         if(response){
@@ -51,15 +50,14 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
 
 router.put('/:id', isAuth, isAdmin, async (req, res) => {
     try {
-        const { typeEntidad, nit, name, address, phone, saldoCajaDiario, saldoBancos } = req.body;
+        const { typeEntidad, nit, name, boss, address, phone } = req.body;
         const response = await Entidad.findOneAndUpdate({_id: req.params.id}, {
             typeEntidad,
             nit, 
-            name, 
+            name,
+            boss, 
             address, 
-            phone, 
-            saldoCajaDiario, 
-            saldoBancos
+            phone
         });
 
         if(response){
@@ -67,38 +65,6 @@ router.put('/:id', isAuth, isAdmin, async (req, res) => {
         }
     } catch (error) {
         res.status(500).send({message: 'Error al actualizar entidad'})
-    }
-});
-
-router.put('/saldos/bancos/:id', isAuth, async (req, res) => {
-    try {
-        const { saldoBancos } = req.body;
-       
-        const response = await Entidad.findOneAndUpdate({_id: req.params.id}, {
-            saldoBancos
-        });
-
-        if(response){
-            res.status(200).send({message: 'Saldos actualizados con éxito'});
-        }
-    } catch (error) {
-        res.status(500).send({message: 'Error al actualizar saldos'});
-    }
-});
-
-router.put('/saldos/caja/:id', isAuth, async (req, res) => {
-    try {
-        const { saldoCajaDiario } = req.body;
-
-        const response = await Entidad.findOneAndUpdate({_id: req.params.id}, {
-            saldoCajaDiario,
-        });
-
-        if(response){
-            res.status(200).send({message: 'Saldos actualizados con éxito'});
-        }
-    } catch (error) {
-        res.status(500).send({message: 'Error al actualizar saldos'});
     }
 });
 

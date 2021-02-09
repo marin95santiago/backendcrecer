@@ -22,20 +22,16 @@ const entidadSchema = new Schema ({
         type: String,
         required: true
     },
+    boss: {
+        type: String,
+        required: true
+    },
     address: {
         type: String,
         required: true
     },
     phone: {
         type: String,
-        required: true
-    },
-    saldoCajaDiario: {
-        type: Array,
-        required: true
-    },
-    saldoBancos: {
-        type: Array,
         required: true
     }
 }, {

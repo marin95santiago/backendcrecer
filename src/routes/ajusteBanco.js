@@ -22,6 +22,8 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
             idEnterprice: req.user.idEnterprice,
             idEntidad,
             entidad,
+            idUser: req.user._id,
+            emailUser: req.user.email,
             serial,
             bank,
             numberAccount,
@@ -55,6 +57,8 @@ router.put('/:id', isAuth, async (req, res) => {
         const response = await AjusteBanco.findOneAndUpdate({_id: req.params.id}, {
             idEntidad,
             entidad,
+            idUser: req.user._id,
+            emailUser: req.user.email,
             serial,
             bank,
             numberAccount,

@@ -21,6 +21,14 @@ const reciboCajaDiarioSchema = new Schema ({
         type: String,
         required: true
     },
+    emailUser: {
+        type: String,
+        required: true
+    },
+    idUser:{
+        type: String,
+        required: true
+    },
     type:{
         type: String,
         required: true
