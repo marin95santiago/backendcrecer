@@ -28,7 +28,7 @@ router.get('/admin', isAuth, isAdmin, async (req, res) => {
 
 router.get('/:id', isAuth, async (req, res) => {
     try {
-        const response = await EntidadBanco.findOne({_id: req.params.id});
+        const response = await EntidadBanco.findOne({serial: req.params.id});
         if(response){
             res.send(response);
         }

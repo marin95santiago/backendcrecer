@@ -66,4 +66,16 @@ router.put('/:id', isAuth, async (req, res) => {
     }
 });
 
+router.delete('/:id', isAuth, async (req, res) => {
+    try {
+        const response = await TransaccionInterna.findOneAndDelete({_id: req.params.id});
+        if(response){
+            res.send({message: 'Transacción interna eliminada con éxito'});
+        }
+
+    } catch (error) {
+        res.status(500).send({message: 'Error al eliminar transacción interna'});
+    }
+});
+
 module.exports = router;
