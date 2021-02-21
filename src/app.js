@@ -26,6 +26,8 @@ app.use('/api/entidad', require('./routes/entidad'));
 app.use('/api/entidad-caja', require('./routes/entidadCaja'));
 app.use('/api/entidad-banco', require('./routes/entidadBanco'));
 app.use('/api/bank', require('./routes/bank'));
+app.use('/api/class-third', require('./routes/classThird'));
+app.use('/api/third', require('./routes/third'));
 app.use('/api/transaccion-interna', require('./routes/transaccionInterna'));
 app.use('/api/ajuste-banco', require('./routes/ajusteBanco'));
 

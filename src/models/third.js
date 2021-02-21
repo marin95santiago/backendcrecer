@@ -1,15 +1,11 @@
 const { Schema, model } = require('mongoose');
 
-const ajusteBancoSchema = new Schema ({
-    idEnterprice:{
+const thirdSchema = new Schema ({
+    idEnterprice: {
         type: String,
         required: true
     },
-    idEntidad:{
-        type: String,
-        required: true
-    },
-    entidad:{
+    idEntidad: {
         type: String,
         required: true
     },
@@ -17,36 +13,50 @@ const ajusteBancoSchema = new Schema ({
         type: String,
         required: true
     },
-    emailUser: {
+    idForReceipt: {
         type: String,
         required: true
     },
-    serial:{
+    typeThird: {
+        type: String,
+    },
+    typeDocument: {
         type: String,
         required: true
     },
-    bank:{
-        type: String,
-        required: true
-    },
-    numberAccount:{
+    document: {
         type: String,
         required: true,
+        unique: true
     },
-    type:{
+    enterpriceName: {
+        type: String,
+    },
+    name: {
+        type: String,
+    },
+    secondName: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    classThird: {
         type: String,
         required: true
     },
-    description:{
+    email: {
         type: String,
-        required: true
     },
-    value:{
-        type: Number,
-        required: true
+    address: {
+        type: String,
+    },
+    phone: {
+        type: String
     }
 }, {
     timestamps: true
 });
 
-module.exports = model('AjusteBanco', ajusteBancoSchema);
+module.exports = model('Third', thirdSchema)
+
