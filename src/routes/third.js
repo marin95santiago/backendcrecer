@@ -41,7 +41,6 @@ router.post('/', isAuth, async (req, res) => {
     try {
         const {
             idEntidad,
-            idForReceipt,
             typeThird,
             typeDocument,
             document,
@@ -59,7 +58,6 @@ router.post('/', isAuth, async (req, res) => {
             idEnterprice: req.user.idEnterprice,
             idEntidad: idEntidad || req.user.idEntidad,
             idUser: req.user._id,
-            idForReceipt,
             typeThird,
             typeDocument,
             document,
@@ -114,25 +112,6 @@ router.put('/:id', isAuth, async (req, res) => {
 
     } catch (error) {
         res.status(500).send({message: 'Error al momento de actualizar el tercero'});
-    }
-});
-
-router.put('/migration/:id', isAuth, async (req, res) => {
-    try {
-        const {
-            idForReceipt
-        } = req.body
-
-        const response = await Third.findOneAndUpdate({_id: req.params.id},{
-            idForReceipt
-        });
-
-        if(response){
-            res.status(200).send({message: 'Migración de tercero realizada con éxito'});
-        }
-
-    } catch (error) {
-        res.status(500).send({message: 'Error al momento de migrar el tercero'});
     }
 });
 

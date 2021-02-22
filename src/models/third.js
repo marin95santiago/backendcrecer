@@ -13,10 +13,6 @@ const thirdSchema = new Schema ({
         type: String,
         required: true
     },
-    idForReceipt: {
-        type: String,
-        required: true
-    },
     typeThird: {
         type: String,
     },
@@ -26,8 +22,7 @@ const thirdSchema = new Schema ({
     },
     document: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     enterpriceName: {
         type: String,
