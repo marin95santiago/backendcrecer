@@ -101,6 +101,26 @@ router.put('/:id', isAuth, async (req, res) => {
     }
 });
 
+router.post('/migration', isAuth, async (req, res) => {
+    try {
+        const { beforeThird, newThird, idEntidad } = req.body;
+        const response = await ReciboCajaDiario.find({idEntidad: idEntidad || req.user.idEntidad})
+        for(let i = 0; i < response.length; i ++){
+            if(response[i].client === beforeThird){
+                await ReciboCajaDiario.findOneAndUpdate({_id: response[i]._id}, {
+                    client: newThird
+                });
+                console.log('entra');
+            }
+        }
+        
+        res.status(200).send({message: 'Migración de recibos realizada con éxito'});
+
+    } catch (error) {
+        res.status(500).send({message: 'Error al migrar recibos de caja diario'});
+    }
+});
+
 router.delete('/:id', isAuth, async (req, res) => {
     try {
         const response = await ReciboCajaDiario.findOneAndDelete({_id: req.params.id});
