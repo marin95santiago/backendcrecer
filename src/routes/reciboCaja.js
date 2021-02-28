@@ -39,7 +39,7 @@ router.get('/client', isAuth, async (req, res) => {
 
 router.post('/', isAuth, async (req, res) => {
     try {
-        const { type, date, serial, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
+        const { type, date, serial, client, classThird, valueText, valueNumber, wayPay, tableConcept } = req.body;
         const newRecibo = new ReciboCajaDiario ({
             enterprice: req.user.enterprice, 
             idEnterprice: req.user.idEnterprice,
@@ -51,7 +51,8 @@ router.post('/', isAuth, async (req, res) => {
             type, 
             date, 
             serial, 
-            client, 
+            client,
+            classThird,
             valueText, 
             valueNumber, 
             wayPay, 
@@ -79,7 +80,7 @@ router.get('/:id', isAuth, async (req, res) => {
 
 router.put('/:id', isAuth, async (req, res) => {
     try {
-        const { date, serial, type, number, client, valueText, valueNumber, wayPay, tableConcept } = req.body;
+        const { date, serial, type, number, client, classThird, valueText, valueNumber, wayPay, tableConcept } = req.body;
         const response = await ReciboCajaDiario.findOneAndUpdate({_id: req.params.id}, {
             user: `${req.user.name} ${req.user.lastname}`,
             idUser: req.user._id, 
@@ -87,7 +88,8 @@ router.put('/:id', isAuth, async (req, res) => {
             serial,
             type,
             number, 
-            client, 
+            client,
+            classThird,
             valueText, 
             valueNumber, 
             wayPay, 
@@ -110,7 +112,6 @@ router.post('/migration', isAuth, async (req, res) => {
                 await ReciboCajaDiario.findOneAndUpdate({_id: response[i]._id}, {
                     client: newThird
                 });
-                console.log('entra');
             }
         }
         

@@ -37,7 +37,7 @@ const thirdSchema = new Schema ({
         type: String
     },
     classThird: {
-        type: String,
+        type: Array,
         required: true
     },
     email: {

@@ -45,6 +45,10 @@ const reciboCajaDiarioSchema = new Schema ({
         type: String,
         required: true
     },
+    classThird:{
+        type: String,
+        required: true
+    },
     valueText:{
         type: String,
         required: true
