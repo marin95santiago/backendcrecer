@@ -39,7 +39,7 @@ router.get('/client', isAuth, async (req, res) => {
 
 router.post('/', isAuth, async (req, res) => {
     try {
-        const { type, date, serial, client, classThird, valueText, valueNumber, wayPay, tableConcept } = req.body;
+        const { type, date, serial, third, classThird, valueText, valueNumber, wayPay, tableConcept } = req.body;
         const newRecibo = new ReciboCajaDiario ({
             enterprice: req.user.enterprice, 
             idEnterprice: req.user.idEnterprice,
@@ -51,7 +51,7 @@ router.post('/', isAuth, async (req, res) => {
             type, 
             date, 
             serial, 
-            client,
+            third,
             classThird,
             valueText, 
             valueNumber, 
@@ -80,7 +80,7 @@ router.get('/:id', isAuth, async (req, res) => {
 
 router.put('/:id', isAuth, async (req, res) => {
     try {
-        const { date, serial, type, number, client, classThird, valueText, valueNumber, wayPay, tableConcept } = req.body;
+        const { date, serial, type, number, third, classThird, valueText, valueNumber, wayPay, tableConcept } = req.body;
         const response = await ReciboCajaDiario.findOneAndUpdate({_id: req.params.id}, {
             user: `${req.user.name} ${req.user.lastname}`,
             idUser: req.user._id, 
@@ -88,7 +88,7 @@ router.put('/:id', isAuth, async (req, res) => {
             serial,
             type,
             number, 
-            client,
+            third,
             classThird,
             valueText, 
             valueNumber, 
@@ -108,9 +108,9 @@ router.post('/migration', isAuth, async (req, res) => {
         const { beforeThird, newThird, idEntidad } = req.body;
         const response = await ReciboCajaDiario.find({idEntidad: idEntidad || req.user.idEntidad})
         for(let i = 0; i < response.length; i ++){
-            if(response[i].client === beforeThird){
+            if(response[i].third === beforeThird){
                 await ReciboCajaDiario.findOneAndUpdate({_id: response[i]._id}, {
-                    client: newThird
+                    third: newThird
                 });
             }
         }

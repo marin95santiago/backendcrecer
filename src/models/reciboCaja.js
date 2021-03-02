@@ -41,7 +41,7 @@ const reciboCajaDiarioSchema = new Schema ({
         type: String,
         required: true
     },
-    client:{
+    third:{
         type: String,
         required: true
     },
