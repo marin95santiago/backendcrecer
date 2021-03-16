@@ -8,10 +8,10 @@ router.get('/', isAuth, async (req, res) => {
     try {
         const response = await EntidadBanco.find({idEntidad: req.user.idEntidad});
         if(response){
-            res.send(response);
+            res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'No se han encontrado los movimientos de banco de la entidad'});
+        res.status(204).json({message: 'No se han encontrado los movimientos de banco de la entidad'});
     }
 });
 
@@ -19,10 +19,10 @@ router.get('/admin', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await EntidadBanco.find({idEnterprice: req.user.idEnterprice});
         if(response){
-            res.send(response);
+            res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'No se han encontrado los movimientos de banco de las entidades'});
+        res.status(204).json({message: 'No se han encontrado los movimientos de banco de las entidades'});
     }
 });
 
@@ -30,10 +30,10 @@ router.get('/:id', isAuth, async (req, res) => {
     try {
         const response = await EntidadBanco.findOne({serial: req.params.id});
         if(response){
-            res.send(response);
+            res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'No se ha encontrado el movimiento de banco'});
+        res.status(204).json({message: 'No se ha encontrado el movimiento de banco'});
     }
 });
 
@@ -53,10 +53,10 @@ router.post('/', isAuth, async (req, res) => {
         });
         const response = await newMovement.save();
         if(response){
-            res.status(200).send({message: 'Movimiento de banco registrado con éxito'});
+            res.status(200).json({message: 'Movimiento de banco registrado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'No se ha registrado el movimiento de banco'});
+        res.status(204).json({message: 'No se ha registrado el movimiento de banco'});
     }
 });
 
@@ -73,10 +73,10 @@ router.put('/:id', isAuth, async (req, res) => {
             value
         });
         if(response){
-            res.status(200).send({message: 'Movimiento de banco actualizado con éxito'});
+            res.status(200).json({message: 'Movimiento de banco actualizado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al momento de actualizar el movimiento de banco'});
+        res.status(204).json({message: 'Error al momento de actualizar el movimiento de banco'});
     }
 });
 
@@ -84,10 +84,10 @@ router.delete('/:id', isAuth, async (req, res) => {
     try {
         const response = await EntidadBanco.findOneAndDelete({serial: req.params.id});
         if(response){
-            res.status(200).send({message: 'Movimiento de banco eliminado correctamente'});
+            res.status(200).json({message: 'Movimiento de banco eliminado correctamente'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al eliminar el movimiento de banco'});
+        res.status(204).json({message: 'Error al eliminar el movimiento de banco'});
     }
 });
 

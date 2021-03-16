@@ -11,7 +11,7 @@ router.get('/admin', isAuth, isAdmin, async (req, res) => {
             res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar los terceros'});
+        res.status(203).json({message: 'Error al buscar los terceros'});
     }
 });
 
@@ -22,7 +22,7 @@ router.get('/', isAuth, async (req, res) => {
             res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar los terceros'});
+        res.status(203).json({message: 'Error al buscar los terceros'});
     }
 });
 
@@ -33,7 +33,7 @@ router.get('/:id', isAuth, async (req, res) => {
             res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar el tercero'});
+        res.status(203).json({message: 'Error al buscar el tercero'});
     }
 });
 
@@ -53,6 +53,14 @@ router.post('/', isAuth, async (req, res) => {
             address,
             phone
         } = req.body
+
+        const thirdFound = await Third.findOne({
+            idEntidad: idEntidad || req.user.idEntidad,
+            document: document
+        });
+
+        if(thirdFound)
+            return res.status(203).json({message: 'Ya existe un tercero con este documento'});
 
         const newThird = new Third({
             idEnterprice: req.user.idEnterprice,
@@ -74,11 +82,11 @@ router.post('/', isAuth, async (req, res) => {
         const response = await newThird.save();
 
         if(response){
-            res.status(200).send({message: 'Tercero creado correctamente'});
+            res.status(200).json({message: 'Tercero creado correctamente'});
         }
 
     } catch (error) {
-        res.status(500).send({message: 'Error al momento de crear el tercero'});
+        res.status(203).json({message: 'Error al momento de crear el tercero'});
     }
 });
 
@@ -107,11 +115,11 @@ router.put('/:id', isAuth, async (req, res) => {
         });
 
         if(response){
-            res.status(200).send({message: 'Tercero actualizado correctamente'});
+            res.status(200).json({message: 'Tercero actualizado correctamente'});
         }
 
     } catch (error) {
-        res.status(500).send({message: 'Error al momento de actualizar el tercero'});
+        res.status(203).json({message: 'Error al momento de actualizar el tercero'});
     }
 });
 
@@ -119,10 +127,10 @@ router.delete('/:id', isAuth, async (req, res) => {
     try {
         const response = await Third.findOneAndDelete({_id: req.params.id});
         if(response){
-            res.status(200).send({message: 'Tercero eliminado con éxito'});
+            res.status(200).json({message: 'Tercero eliminado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al momento de eliminar el tercero'})
+        res.status(203).json({message: 'Error al momento de eliminar el tercero'});
     }
 });
 

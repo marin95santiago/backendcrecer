@@ -8,10 +8,10 @@ router.get('/', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await Enterprice.findOne({_id: req.user.idEnterprice});
         if(response){
-            res.send(response)
+            res.status(200).send(response)
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar empresa'});
+        res.status(204).json({message: 'Error al buscar empresa'});
     }
 });
 
@@ -19,10 +19,10 @@ router.get('/:id', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await Enterprice.findOne({_id: req.params.id});
         if(response){
-            res.send(response);
+            res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar empresa'});
+        res.status(204).json({message: 'Error al buscar empresa'});
     }
 });
 
@@ -42,10 +42,10 @@ router.post('/new/enterprice/dev/santiago-marin', async (req, res) => {
         });
         const response = await newEnterprice.save();
         if(response){
-            res.status(200).send({message: 'Empresa creada con éxito'});
+            res.status(200).json({message: 'Empresa creada con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al crear empresa'});
+        res.status(204).json({message: 'Error al crear empresa'});
     }
 });
 
@@ -65,10 +65,10 @@ router.put('/update/enterprice/dev/:id', isAuth, isAdmin, async (req, res) => {
         });
 
         if(response){
-            res.status(200).send({message: 'Empresa actualizada con éxito'});
+            res.status(200).json({message: 'Empresa actualizada con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al actualizar empresa'});
+        res.status(204).json({message: 'Error al actualizar empresa'});
     }
 });
 
@@ -76,10 +76,10 @@ router.delete('/delete/enterprice/dev/:id', isAuth, async (req, res) => {
     try {
         const response = await Enterprice.findOneAndDelete({_id: req.params.id});
         if(response){
-            res.status(200).send({message: 'Empresa eliminada con éxito'});
+            res.status(200).json({message: 'Empresa eliminada con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al eliminar empresa'});
+        res.status(204).json({message: 'Error al eliminar empresa'});
     }
 });
 

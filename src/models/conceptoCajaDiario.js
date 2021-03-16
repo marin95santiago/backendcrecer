@@ -11,8 +11,7 @@ const conceptoCajaDiarioSchema = new Schema ({
     },
     concept:{
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     classConcept:{
         type: String,

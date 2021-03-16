@@ -11,10 +11,10 @@ router.get('/', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await User.find();
         if(response){
-            res.send(response);
+            res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al consultar usuarios'});
+        res.status(203).json({message: 'Error al consultar usuarios'});
     }
 });
 
@@ -22,10 +22,10 @@ router.get('/:id', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await User.findOne({_id: req.params.id});
         if(response){
-            res.send(response);
+            res.status(200).send(response);
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al consultar usuario'});
+        res.status(203).json({message: 'Error al consultar usuario'});
     }
 });
 
@@ -49,10 +49,10 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
 
         const response = await newUser.save();
         if(response){
-            res.status(200).send({message: 'Usuario creado con éxito'});
+            res.status(200).json({message: 'Usuario creado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al crear nuevo usuario'});
+        res.status(203).json({message: 'Error al crear nuevo usuario'});
     }
 });
 
@@ -74,10 +74,10 @@ router.post('/new/user/dev/santiago-marin', async (req, res) => {
 
         const response = await newUser.save();
         if(response){
-            res.status(200).send({message: 'Usuario creado con éxito'});
+            res.status(200).json({message: 'Usuario creado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al crear nuevo usuario'});
+        res.status(203).json({message: 'Error al crear nuevo usuario'});
     }
 });
 
@@ -94,10 +94,10 @@ router.put('/:id', isAuth, isAdmin, async (req, res) => {
         });
 
         if(response){
-            res.status(200).send({message: 'Usuario actualizado con éxito'});
+            res.status(200).json({message: 'Usuario actualizado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al actualizar usuario'});
+        res.status(203).json({message: 'Error al actualizar usuario'});
     }
 });
 
@@ -105,10 +105,10 @@ router.delete('/:id', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await User.findOneAndDelete({_id: req.params.id});
         if(response){
-            res.status(200).send({message: 'Usuario eliminado con éxito'});
+            res.status(200).json({message: 'Usuario eliminado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al eliminar usuario'});
+        res.status(203).josn({message: 'Error al eliminar usuario'});
     }
 })
 
@@ -117,11 +117,11 @@ router.post('/login', async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({email});
         if(!user){
-            res.status(404).send({message: 'Usuario no encontrado'});
+            return res.status(203).json({message: 'Usuario no encontrado'});
         } else {
             match = await user.match(password);
             if(!match){
-                res.status(404).send({message: 'Contraseña inválida'});
+                return res.status(203).json({message: 'Contraseña inválida'});
             } else {
                 let token = jwt.sign({
                     _id: user._id,
@@ -136,11 +136,11 @@ router.post('/login', async (req, res) => {
                     
                 }, SECRET, {expiresIn: '12h'});
 
-                res.send(token)
+                return res.status(200).send(token);
             }
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al iniciar sesión'});
+        res.status(203).json({message: 'Error al iniciar sesión'});
     }
 });
 

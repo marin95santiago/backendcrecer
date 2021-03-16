@@ -7,24 +7,32 @@ const TransaccionInterna = require('../models/transaccionInterna');
 router.get('/client', isAuth, async (req, res) => {
     try {
         const response = await TransaccionInterna.find({idEntidad: req.user.idEntidad});
-        res.send(response);
+        res.status(200).send(response);
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar recibos de transacción interna'});
+        res.status(203).json({message: 'Error al buscar recibos de transacción interna'});
     }
 });
 
 router.get('/admin', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await TransaccionInterna.find({idEnterprice: req.user.idEnterprice});
-        res.send(response);
+        res.status(200).send(response);
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar recibos de transacción interna'});
+        res.status(203).json({message: 'Error al buscar recibos de transacción interna'});
     }
 });
 
 router.post('/', isAuth, async (req, res) => {
     try {
         const { type, date, serial, bank, value } = req.body;
+
+        const internalTransactionFound = await TransaccionInterna.findOne({
+            idEntidad: req.user.idEntidad,
+            serial: serial
+        });
+
+        if(internalTransactionFound)
+            return res.status(203).json({message: `Ya existe una transacción interna con el serial ${serial}`});
         
         const newTransaccionInterna = new TransaccionInterna ({
             idEnterprice: req.user.idEnterprice,
@@ -40,17 +48,19 @@ router.post('/', isAuth, async (req, res) => {
         });
         
         const response = await newTransaccionInterna.save();
-        res.send({message: 'Transacción interna creada con éxito'});
+
+        res.status(200).json({message: 'Transacción interna creada con éxito'});
 
     } catch (error) {
-        res.status(500).send({message: 'Error al crear transacción interna'});
+        res.status(203).json({message: 'Error al crear transacción interna'});
     }
 });
 
 router.put('/:id', isAuth, async (req, res) => {
     try {
         const { type, serial, bank, value } = req.body;
-        await TransaccionInterna.findOneAndUpdate({_id: req.params.id}, {
+        
+        const response = await TransaccionInterna.findOneAndUpdate({_id: req.params.id}, {
             idUser: req.user._id,
             emailUser: req.user.email,
             type,
@@ -59,10 +69,12 @@ router.put('/:id', isAuth, async (req, res) => {
             value
         });
 
-        res.send({message: 'Transacción interna modificada con éxito'});
+        if(response){
+            res.status(200).json({message: 'Transacción interna modificada con éxito'});
+        }
 
     } catch (error) {
-        res.status(500).send({message: 'Error al actualizar transacción interna'});
+        res.status(203).json({message: 'Error al actualizar transacción interna'});
     }
 });
 
@@ -70,11 +82,11 @@ router.delete('/:id', isAuth, async (req, res) => {
     try {
         const response = await TransaccionInterna.findOneAndDelete({_id: req.params.id});
         if(response){
-            res.send({message: 'Transacción interna eliminada con éxito'});
+            res.status(200).json({message: 'Transacción interna eliminada con éxito'});
         }
 
     } catch (error) {
-        res.status(500).send({message: 'Error al eliminar transacción interna'});
+        res.status(203).json({message: 'Error al eliminar transacción interna'});
     }
 });
 

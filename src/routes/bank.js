@@ -3,18 +3,7 @@ const router = Router();
 const { isAuth, isAdmin } = require('../util/tokenHandler');
 
 const Bank = require('../models/bank');
-/*
-router.get('/', isAuth, async (req, res) => {
-    try {
-        const response = await Bank.find();
-        if(response){
-            res.send(response)
-        }
-    } catch (error) {
-        res.status(500).send({message: 'Error al buscar bancos'});
-    }
-});
-*/
+
 router.get('/admin', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await Bank.find({idEnterprice: req.user.idEnterprice});
@@ -22,7 +11,7 @@ router.get('/admin', isAuth, isAdmin, async (req, res) => {
             res.send(response)
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar bancos'});
+        res.status(203).json({message: 'Error al buscar bancos'});
     }
 });
 
@@ -30,16 +19,20 @@ router.get('/client', isAuth, async (req, res) => {
     try {
         const response = await Bank.find({idEntidad: req.user.idEntidad});
         if(response){
-            res.send(response)
+            res.status(200).send(response)
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al buscar bancos'});
+        res.status(203).json({message: 'Error al buscar bancos'});
     }
 });
 
 router.post('/', isAuth, isAdmin, async (req, res) => {
     try {
         const { idEntidad, bank, numberAccount, typeAccount } = req.body;
+        const bankFound = await Bank.findOne({idEntidad: idEntidad, numberAccount: numberAccount});
+        if(bankFound)
+            return res.status(203).json({message: `El banco ${numberAccount} ya existe`});
+            
         const newBank = new Bank ({
             idEnterprice: req.user.idEnterprice,
             idEntidad,
@@ -49,10 +42,10 @@ router.post('/', isAuth, isAdmin, async (req, res) => {
         });
         const response = await newBank.save();
         if(response){
-            res.status(200).send({message: 'Banco creado con éxito'});
+            res.status(200).json({message: `Banco ${numberAccount} creado con éxito`});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al crear banco'});
+        res.status(203).json({message: 'Error al crear banco'});
     }
 });
 
@@ -60,10 +53,10 @@ router.delete('/:id', isAuth, isAdmin, async (req, res) => {
     try {
         const response = await Bank.findOneAndDelete({_id: req.params.id});
         if(response){
-            res.status(200).send({message: 'Banco eliminado con éxito'});
+            res.status(200).json({message: 'Banco eliminado con éxito'});
         }
     } catch (error) {
-        res.status(500).send({message: 'Error al eliminar banco'});
+        res.status(203).json({message: 'Error al eliminar banco'});
     }
 });
 
