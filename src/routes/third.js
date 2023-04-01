@@ -88,6 +88,7 @@ router.post('/', isAuth, async (req, res) => {
         }
 
     } catch (error) {
+        console.log(error)
         res.status(203).json({message: 'Error al momento de crear el tercero'});
     }
 });
