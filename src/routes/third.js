@@ -38,6 +38,7 @@ router.get('/:id', isAuth, async (req, res) => {
 });
 
 router.post('/', isAuth, async (req, res) => {
+    console.log('Entra a crear el tercero')
     try {
         const {
             idEntidad,
