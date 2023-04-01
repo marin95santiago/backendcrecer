@@ -40,6 +40,7 @@ router.get('/:id', isAuth, async (req, res) => {
 router.post('/', isAuth, async (req, res) => {
     try {
         const {
+            idEntidad,
             typeThird,
             typeDocument,
             document,
@@ -52,18 +53,19 @@ router.post('/', isAuth, async (req, res) => {
             address,
             phone
         } = req.body
-
+        /*
         const thirdFound = await Third.findOne({
-            idEntidad: req.user.idEntidad,
+            idEntidad: idEntidad || req.user.idEntidad,
             document: document
         });
 
         if(thirdFound)
             return res.status(203).json({message: 'Ya existe un tercero con este documento'});
+        */
 
         const newThird = new Third({
             idEnterprice: req.user.idEnterprice,
-            idEntidad: req.user.idEntidad,
+            idEntidad: idEntidad || req.user.idEntidad,
             idUser: req.user._id,
             typeThird,
             typeDocument,
