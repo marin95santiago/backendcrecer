@@ -40,7 +40,6 @@ router.get('/:id', isAuth, async (req, res) => {
 router.post('/', isAuth, async (req, res) => {
     try {
         const {
-            idEntidad,
             typeThird,
             typeDocument,
             document,
@@ -55,7 +54,7 @@ router.post('/', isAuth, async (req, res) => {
         } = req.body
 
         const thirdFound = await Third.findOne({
-            idEntidad: idEntidad || req.user.idEntidad,
+            idEntidad: req.user.idEntidad,
             document: document
         });
 
@@ -64,7 +63,7 @@ router.post('/', isAuth, async (req, res) => {
 
         const newThird = new Third({
             idEnterprice: req.user.idEnterprice,
-            idEntidad: idEntidad || req.user.idEntidad,
+            idEntidad: req.user.idEntidad,
             idUser: req.user._id,
             typeThird,
             typeDocument,
