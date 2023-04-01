@@ -38,7 +38,6 @@ router.get('/:id', isAuth, async (req, res) => {
 });
 
 router.post('/', isAuth, async (req, res) => {
-    console.log('Entra a crear el tercero')
     try {
         const {
             idEntidad,
@@ -54,7 +53,7 @@ router.post('/', isAuth, async (req, res) => {
             address,
             phone
         } = req.body
-        /*
+
         const thirdFound = await Third.findOne({
             idEntidad: idEntidad || req.user.idEntidad,
             document: document
@@ -62,7 +61,6 @@ router.post('/', isAuth, async (req, res) => {
 
         if(thirdFound)
             return res.status(203).json({message: 'Ya existe un tercero con este documento'});
-        */
 
         const newThird = new Third({
             idEnterprice: req.user.idEnterprice,
@@ -88,7 +86,6 @@ router.post('/', isAuth, async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error)
         res.status(203).json({message: 'Error al momento de crear el tercero'});
     }
 });
